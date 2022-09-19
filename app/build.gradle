@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk 28
     //buildFeatures.viewBinding true //영상코드
     buildFeatures { //뷰 바인딩을 사용하기 위해 추가
         viewBinding = true
@@ -13,7 +13,7 @@ android {
     defaultConfig {
         applicationId "com.example.project"
         minSdk 23
-        targetSdk 32
+        targetSdk 28
         versionCode 1
         versionName "1.0"
 
@@ -36,14 +36,20 @@ android {
 }
 
 dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.3.0'
+    //implementation 'androidx.appcompat:appcompat:1.3.0' //원본
+    implementation 'androidx.appcompat:appcompat:1.1.0' //수정
     implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    //implementation 'androidx.constraintlayout:constraintlayout:2.0.4' //원본
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3' //수정
     implementation 'androidx.viewpager2:viewpager2:1.0.0' //화면전환을 위해 추가
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    //testImplementation 'junit:junit:4.13.2' //원본
+    testImplementation 'junit:junit:4.12' //수정
+    //androidTestImplementation 'androidx.test.ext:junit:1.1.3' //원본
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1' //수정
+    //androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0' //원본
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0' //수정
 }

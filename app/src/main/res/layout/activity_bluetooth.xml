@@ -121,6 +121,14 @@
             android:layout_toRightOf="@+id/checkboxLED1"
             android:layout_toEndOf="@+id/checkboxLED1" />
 
+
+        <Button
+            android:id="@+id/button10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="다음화면" />
+
+
         <ListView
             android:id="@+id/devicesListView"
             android:layout_width="wrap_content"
@@ -129,6 +137,8 @@
             android:layout_alignEnd="@+id/off"
             android:layout_alignRight="@+id/off"
             android:choiceMode="singleChoice" />
+
+
 
     </LinearLayout>
 
