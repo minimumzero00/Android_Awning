@@ -31,6 +31,8 @@
         android:layout_marginTop="100dp"
         android:layout_marginEnd="300dp"
         android:layout_marginStart="30dp"
+        android:backgroundTint="#FFEB3B"
+        android:textColor="#000000"
         android:text="▼" />
 
     <Button
@@ -40,6 +42,8 @@
         android:layout_marginTop="100dp"
         android:layout_marginEnd="200dp"
         android:layout_marginStart="130dp"
+        android:backgroundTint="#FFEB3B"
+        android:textColor="#000000"
         android:text="■" />
 
     <Button
@@ -49,6 +53,8 @@
         android:layout_marginTop="100dp"
         android:layout_marginEnd="100dp"
         android:layout_marginStart="230dp"
+        android:backgroundTint="#FFEB3B"
+        android:textColor="#000000"
         android:text="▲" />
 
     <TextView
@@ -67,6 +73,8 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="270dp"
         android:layout_marginEnd="300dp"
+        android:backgroundTint="#FFEB3B"
+        android:textColor="#000000"
         android:text="자동" />
 
     <Button
@@ -76,6 +84,8 @@
         android:layout_marginTop="270dp"
         android:layout_marginEnd="200dp"
         android:layout_marginStart="130dp"
+        android:backgroundTint="#FFEB3B"
+        android:textColor="#000000"
         android:text="꺼짐" />
 
     <Button
@@ -85,6 +95,48 @@
         android:layout_marginTop="270dp"
         android:layout_marginEnd="100dp"
         android:layout_marginStart="230dp"
+        android:backgroundTint="#FFEB3B"
+        android:textColor="#000000"
         android:text="켜짐" />
 
+    <!-- on/off 버튼   -->
+
+    <ToggleButton
+        android:id="@+id/toggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="500dp"
+        android:textOff="바람 off"
+        android:textOn="바람 on" />
+
+    <ToggleButton
+        android:id="@+id/toggle2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="170dp"
+        android:layout_marginTop="500dp"
+        android:textOff="햇빛 off"
+        android:textOn="햇빛 on" />
+
+    <ToggleButton
+        android:id="@+id/toggle3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="290dp"
+        android:layout_marginTop="500dp"
+        android:textOff="비 off"
+        android:textOn="비 on" />
+
+    <!--    //블루투스 버튼-->
+
+    <!--    <Button-->
+    <!--        android:id="@+id/mButton"-->
+    <!--        android:layout_width="74dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginLeft="170dp"-->
+    <!--        android:layout_marginTop="400dp"-->
+    <!--        android:text="화면전환" />-->
+
 </FrameLayout>
+

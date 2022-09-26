@@ -21,6 +21,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -30,27 +34,13 @@ import java.util.UUID;
 
 import static android.text.TextUtils.split;
 
+import com.example.project.databinding.ActivityMainBinding;
+import androidx.fragment.app.FragmentActivity;
+
+import kotlin.TypeCastException;
+import kotlin.jvm.internal.Intrinsics;
+
 public class Bluetooth extends AppCompatActivity {
-
-    // 화면전화 시작
-
-//    private Button button10New;
-
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
-//
-//        button10New = (Button) findViewById(R.id.button10);
-//
-//        button10New.setOnClickListener((v) -> {
-//            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-//            startActivity(intent);
-//        });
-//    }
-    // 화면전화 끝
-
-    //private ActivityResultLauncher<Intent> resultLauncher; //추가
 
     // GUI Components
     private TextView mBluetoothStatus;
@@ -60,6 +50,7 @@ public class Bluetooth extends AppCompatActivity {
     private Button mOffBtn; //블루투스 off 버튼
     private Button mListPairedDevicesBtn; //show paired devices(디바이스 표시)
     private Button mDiscoverBtn; //discover new devices(새로운 디바이스 찾기)
+    private Button mbutton10; //다음화면
     private CheckBox mLED1; //상단 체크박스
 
     private BluetoothAdapter mBTAdapter;
@@ -74,7 +65,6 @@ public class Bluetooth extends AppCompatActivity {
     // "random" unique identifier
     private static final UUID BTMODULEUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
-
     // #defines for identifying shared types between calling functions
     //#호출 함수 간의 공유 유형을 식별하기 위한 도구
     //final: 지역변수를 상수화 시켜주는 명령어
@@ -82,25 +72,12 @@ public class Bluetooth extends AppCompatActivity {
     private final static int MESSAGE_READ = 2; // 블루투스 핸들러에서 메시지 업데이트를 식별하는 데 사용
     private final static int CONNECTING_STATUS = 3; // 블루투스 핸들러에서 메시지 상태를 식별하는 데 사용
 
+    private ActivityMainBinding binding;
+
 
     @Override //메소드 재정의
     //Bundle 여러가지 타입의 값을 저장하는 Map 클래스
     protected void onCreate(Bundle savedInstanceState) {
-//
-//        // 화면전화 시작
-//        //private Button button10New;
-//
-//            setContentView(R.layout.activity_main);
-//
-//            button10New = (Button) findViewById(R.id.button10);
-//
-//            button10New.setOnClickListener((v) -> {
-//                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-//                startActivity(intent);
-//            });
-//
-//        // 화면전화 끝
-
         //super: 부모 클래스로부터 상속받은 필드나 메소드를 자식 클래스에 참조하는데 사용하는 참조변수
         super.onCreate(savedInstanceState);
         //setContentView: 레이아웃 보여주기 위해 사용
@@ -127,6 +104,31 @@ public class Bluetooth extends AppCompatActivity {
         mDevicesListView.setAdapter(mBTArrayAdapter); // assign model to view
         mDevicesListView.setOnItemClickListener(mDeviceClickListener); //listview의 (?)클릭시 mDeviceClickListener 이벤트
 
+        //@@@@@@@@@@ 로딩화면 시작 @@@@@@@@@
+        Intent intent = new Intent(this, SplashActivity.class);
+        startActivity(intent);
+        //@@@@@@@@@@ 로딩화면 끝 @@@@@@@@@@
+
+        //@@@@@@@@@@ 다음화면 시작 @@@@@@@@@@
+        mbutton10 = (Button)findViewById(R.id.button10); //다음화면
+
+        mbutton10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mLED1.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                if(mConnectedThread != null) //First check to make sure thread created
+                    //먼저 스레드가 생성되었는지 확인합니다.
+                    mConnectedThread.write("1");
+            }
+        });
+        //@@@@@@@@@@ 다음화면 끝 @@@@@@@@@@
 
         //Handler: 다른 객체들이 보낸 데이터를 받고 이 데이터를 처리하는 객체
         //스레드에서 UI를 제어하려고 할 때 핸들러(Handler) 사용
@@ -212,7 +214,7 @@ public class Bluetooth extends AppCompatActivity {
     }
 
     //블루투스 활성화 메소드
-    private void bluetoothOn(View view){ 
+    private void bluetoothOn(View view){
         if (!mBTAdapter.isEnabled()) { //블루투스가 비활성화 되어 있으면
             Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT); //사용불가
@@ -252,14 +254,14 @@ public class Bluetooth extends AppCompatActivity {
                 //mBluetoothStatus.setText("비활성화"); //(수정)
         }
     }
-    
+
     //블루투스 비활성화 메소드
     private void bluetoothOff(View view){
         mBTAdapter.disable(); // turn off
         mBluetoothStatus.setText("Bluetooth disabled"); //(원본)
         //mBluetoothStatus.setText("비활성화"); //(수정)
-        //Toast.makeText(getApplicationContext(),"Bluetooth turned Off", Toast.LENGTH_SHORT).show(); //(원본)
-        Toast.makeText(getApplicationContext(),"블루투스가 비활성화 되었습니다.", Toast.LENGTH_SHORT).show(); //(수정)
+        Toast.makeText(getApplicationContext(),"Bluetooth turned Off", Toast.LENGTH_SHORT).show(); //(원본)
+        //Toast.makeText(getApplicationContext(),"블루투스가 비활성화 되었습니다.", Toast.LENGTH_SHORT).show(); //(수정)
     }
 
     private void discover(View view){
