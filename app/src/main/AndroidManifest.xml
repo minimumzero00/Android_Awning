@@ -23,11 +23,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project">
 
-<!--        android:theme="@style/Theme.AppCompat.Light.NoActionBar" : 메뉴바 제거-->
+        <!-- android:theme="@style/Theme.AppCompat.Light.NoActionBar" : 메뉴바 제거-->
         <activity
-            android:name=".Bluetooth"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:exported="true">
+            android:name=".SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,13 +36,17 @@
         </activity>
 
         <activity
-            android:name=".SplashActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:name=".Bluetooth" />
 
         <!-- android:exported 는 다른 애플리케이션의 구성요소로 Activity 를 시작할 수 있는지 설정 -->
         <activity
             android:name=".MainActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".FragmentActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
     </application>
 

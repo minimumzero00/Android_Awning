@@ -1,12 +1,13 @@
 package com.example.project
 
-import android.bluetooth.BluetoothAdapter
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
 import com.example.project.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    //private val mbtnGoBluetooth: Button? = null
 
 //    onCreate() : Activity가 실행되면서 최초 실행되는 메소드
 //    onStart() : Activity가 화면으로 보일 때(만들어질 때) 실행되는 메소드
@@ -28,5 +29,6 @@ class MainActivity : AppCompatActivity() {
             adapter = MyPagerAdapter(context as FragmentActivity)
             setPageTransformer(ZoomOutPageTransformer())//화면 이벤트:축소
         }
+
     }
 }

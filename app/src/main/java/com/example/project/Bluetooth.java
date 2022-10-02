@@ -51,7 +51,7 @@ public class Bluetooth extends AppCompatActivity {
     private Button mListPairedDevicesBtn; //show paired devices(디바이스 표시)
     private Button mDiscoverBtn; //discover new devices(새로운 디바이스 찾기)
     private Button mbutton10; //다음화면
-    private CheckBox mLED1; //상단 체크박스
+    //private CheckBox mLED1; //상단 체크박스
 
     private BluetoothAdapter mBTAdapter;
     private Set<BluetoothDevice> mPairedDevices; //블루투스 디바이스 데이터 셋
@@ -59,7 +59,7 @@ public class Bluetooth extends AppCompatActivity {
     private ListView mDevicesListView; //디바이스 목록, 뷰(실제화면)
 
     private Handler mHandler; // 콜백 알림을 받을 기본 핸들러
-    private ConnectedThread mConnectedThread; // Bluetooth 백그라운드 작업자 스레드를 사용하여 데이터 전송 및 수신
+    //private ConnectedThread mConnectedThread; // Bluetooth 백그라운드 작업자 스레드를 사용하여 데이터 전송 및 수신
     private BluetoothSocket mBTSocket = null; // 양방향 클라이언트 간 데이터 경로
 
     // "random" unique identifier
@@ -73,7 +73,6 @@ public class Bluetooth extends AppCompatActivity {
     private final static int CONNECTING_STATUS = 3; // 블루투스 핸들러에서 메시지 상태를 식별하는 데 사용
 
     private ActivityMainBinding binding;
-
 
     @Override //메소드 재정의
     //Bundle 여러가지 타입의 값을 저장하는 Map 클래스
@@ -90,7 +89,7 @@ public class Bluetooth extends AppCompatActivity {
         mOffBtn = (Button)findViewById(R.id.off); //블루투스 off
         mDiscoverBtn = (Button)findViewById(R.id.discover); //discover new devices(새로운 디바이스 찾기)
         mListPairedDevicesBtn = (Button)findViewById(R.id.PairedBtn); //show paired devices(디바이스 표시)
-        mLED1 = (CheckBox)findViewById(R.id.checkboxLED1); //상단 체크박스
+        //mLED1 = (CheckBox)findViewById(R.id.checkboxLED1); //상단 체크박스
 
         //리스트뷰를 사용하기 위한 3가지: 뷰(실제화면), 어댑터(뷰와 데이터 사이 매개체), 데이터(실제 데이터)
         //ArrayAdapter: 하나의 항목에 하나의 문자를 나열할 때 사용
@@ -105,11 +104,19 @@ public class Bluetooth extends AppCompatActivity {
         mDevicesListView.setOnItemClickListener(mDeviceClickListener); //listview의 (?)클릭시 mDeviceClickListener 이벤트
 
         //@@@@@@@@@@ 로딩화면 시작 @@@@@@@@@
-        Intent intent = new Intent(this, SplashActivity.class);
-        startActivity(intent);
+//        Intent intent = new Intent(this, SplashActivity.class);
+//        startActivity(intent);
         //@@@@@@@@@@ 로딩화면 끝 @@@@@@@@@@
 
-        //@@@@@@@@@@ 다음화면 시작 @@@@@@@@@@
+        //@@@@@@@@@@ 조작설명화면 시작 @@@@@@@@@
+//        Intent intent = new Intent(this, Fragment0304.class);
+//        startActivity(intent);
+//        Intent intent = new Intent(this, Fragment0304.class);
+//        startActivity(intent);
+//        finish();
+        //@@@@@@@@@@ 조작설명화면 끝 @@@@@@@@@@
+
+        //@@@@@@@@@@ 어닝 조작 화면 시작 @@@@@@@@@@
         mbutton10 = (Button)findViewById(R.id.button10); //다음화면
 
         mbutton10.setOnClickListener(new View.OnClickListener() {
@@ -120,21 +127,21 @@ public class Bluetooth extends AppCompatActivity {
             }
         });
 
-        mLED1.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                if(mConnectedThread != null) //First check to make sure thread created
-                    //먼저 스레드가 생성되었는지 확인합니다.
-                    mConnectedThread.write("1");
-            }
-        });
-        //@@@@@@@@@@ 다음화면 끝 @@@@@@@@@@
+//        mLED1.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v){
+//                if(mConnectedThread != null) //First check to make sure thread created
+//                    //먼저 스레드가 생성되었는지 확인합니다.
+//                    mConnectedThread.write("1");
+//            }
+//        });
+        //@@@@@@@@@@ 어닝 조작 화면 끝 @@@@@@@@@@
 
         //Handler: 다른 객체들이 보낸 데이터를 받고 이 데이터를 처리하는 객체
         //스레드에서 UI를 제어하려고 할 때 핸들러(Handler) 사용
         //블루투스 연결 뒤 수신된 데이터를 읽어와 ReceiveData 텍스트 뷰에 표시해주는 부분
         mHandler = new Handler(){ //(원본)
-        //mHandler = new Handler(Looper.getMainLooper()){ //(수정)
+            //mHandler = new Handler(Looper.getMainLooper()){ //(수정)
             //handleMessage() : 메소드에 정의된 기능이 수행됨
             public void handleMessage(Message msg){ //Message 객체를 사용
                 //MESSAGE_READ 인지 아니면 CONNECTING_STATUS 인지 따져서 확인
@@ -171,14 +178,14 @@ public class Bluetooth extends AppCompatActivity {
         }
         else { //블루투스를 지원하는 기기라면
             //블루투스 on
-            mLED1.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v){
-                    if(mConnectedThread != null) //First check to make sure thread created
-                        //먼저 스레드가 생성되었는지 확인합니다.
-                        mConnectedThread.write("1");
-                }
-            });
+//            mLED1.setOnClickListener(new View.OnClickListener(){
+//                @Override
+//                public void onClick(View v){
+//                    if(mConnectedThread != null) //First check to make sure thread created
+//                        //먼저 스레드가 생성되었는지 확인합니다.
+//                        mConnectedThread.write("1");
+//                }
+//            });
 
             //블루투스 off
             mScanBtn.setOnClickListener(new View.OnClickListener() {
@@ -251,7 +258,7 @@ public class Bluetooth extends AppCompatActivity {
                 //mBluetoothStatus.setText("활성화"); //(수정)
             } else
                 mBluetoothStatus.setText("Disabled"); //(원본)
-                //mBluetoothStatus.setText("비활성화"); //(수정)
+            //mBluetoothStatus.setText("비활성화"); //(수정)
         }
     }
 
@@ -353,8 +360,8 @@ public class Bluetooth extends AppCompatActivity {
                         }
                     }
                     if(fail == false) {
-                        mConnectedThread = new ConnectedThread(mBTSocket);
-                        mConnectedThread.start();
+//                        mConnectedThread = new ConnectedThread(mBTSocket);
+//                        mConnectedThread.start();
 
                         mHandler.obtainMessage(CONNECTING_STATUS, 1, -1, name)
                                 .sendToTarget();
