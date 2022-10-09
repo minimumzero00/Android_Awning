@@ -9,40 +9,42 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".Bluetooth">
 
+
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-<!--        <CheckBox-->
-<!--            android:id="@+id/checkboxLED1"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_alignStart="@id/bluetoothStatus"-->
-<!--            android:layout_alignLeft="@+id/bluetoothStatus"-->
-<!--            android:layout_gravity="center_horizontal"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:checked="false"-->
+        <!--        <CheckBox-->
+        <!--            android:id="@+id/checkboxLED1"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_alignStart="@id/bluetoothStatus"-->
+        <!--            android:layout_alignLeft="@+id/bluetoothStatus"-->
+        <!--            android:layout_gravity="center_horizontal"-->
+        <!--            android:layout_marginTop="10dp"-->
+        <!--            android:checked="false"-->
 
-<!--            android:scaleX="1.7"-->
-<!--            android:scaleY="1.7"-->
-<!--            android:text="Toggle LED"-->
-<!--            android:textColor="#FF0000"-->
-<!--            android:textStyle="bold" />-->
+        <!--            android:scaleX="1.7"-->
+        <!--            android:scaleY="1.7"-->
+        <!--            android:text="Toggle LED"-->
+        <!--            android:textColor="#FF0000"-->
+        <!--            android:textStyle="bold" />-->
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_height="wrap_content">
+            android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.1"
-                android:text="RX:"
-                android:textSize="20sp"
                 android:ellipsize="end"
                 android:maxLines="1"
+                android:text="RX:"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -53,8 +55,8 @@
                 android:layout_weight="0.9"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:textSize="20sp"
-                android:text="@string/bluetooth_status" />
+                android:text="@string/bluetooth_status"
+                android:textSize="20sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -68,8 +70,8 @@
                 android:layout_weight="0.1"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:textSize="20sp"
                 android:text="Status:"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -82,62 +84,74 @@
                 android:layout_weight="0.9"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:textSize="20sp"
-                android:text="@string/bluetooth_status" />
+                android:text="@string/bluetooth_status"
+                android:textSize="20sp" />
 
         </LinearLayout>
 
         <Button
+            android:id="@+id/scan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Bluetooth ON"
-            android:id="@+id/scan"
             android:layout_centerVertical="true"
-            android:layout_toStartOf="@+id/off" />
+            android:layout_toStartOf="@+id/off"
+            android:backgroundTint="#facd89"
+            android:text="Bluetooth ON"
+            android:textColor="#000000" />
 
         <Button
+            android:id="@+id/off"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Bluetooth OFF"
-            android:id="@+id/off"
             android:layout_alignBottom="@+id/scan"
             android:layout_toEndOf="@+id/PairedBtn"
-            android:layout_toRightOf="@+id/PairedBtn" />
+            android:layout_toRightOf="@+id/PairedBtn"
+            android:backgroundTint="#facd89"
+            android:text="Bluetooth OFF"
+            android:textColor="#000000" />
 
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Show paired Devices"
             android:id="@+id/PairedBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/scan"
-            android:layout_toStartOf="@+id/discover" />
+            android:layout_toStartOf="@+id/discover"
+            android:backgroundTint="#facd89"
+            android:text="Show paired Devices"
+            android:textColor="#000000" />
 
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Discover New Devices"
             android:id="@+id/discover"
-            android:layout_below="@+id/off"
-            android:layout_toRightOf="@+id/checkboxLED1"
-            android:layout_toEndOf="@+id/checkboxLED1" />
-
-
-        <Button
-            android:id="@+id/button10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="다음화면" />
-
+            android:layout_below="@+id/off"
+            android:layout_toEndOf="@+id/checkboxLED1"
+            android:layout_toRightOf="@+id/checkboxLED1"
+            android:backgroundTint="#facd89"
+            android:text="Discover New Devices"
+            android:textColor="#000000" />
 
         <ListView
             android:id="@+id/devicesListView"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="392dp"
             android:layout_below="@+id/PairedBtn"
             android:layout_alignEnd="@+id/off"
             android:layout_alignRight="@+id/off"
-            android:choiceMode="singleChoice" />
+            android:choiceMode="singleChoice">
 
+        </ListView>
+
+        <Button
+            android:id="@+id/button10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="140dp"
+            android:backgroundTint="#cce198"
+            android:scaleType="matrix"
+            android:text="NEXT →"
+            android:textColor="#000000" />
 
 
     </LinearLayout>

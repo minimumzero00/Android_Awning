@@ -36,12 +36,14 @@
         </activity>
 
         <activity
-            android:name=".Bluetooth" />
+            android:name=".Bluetooth"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
         <!-- android:exported 는 다른 애플리케이션의 구성요소로 Activity 를 시작할 수 있는지 설정 -->
         <activity
             android:name=".MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
         <activity
             android:name=".FragmentActivity"

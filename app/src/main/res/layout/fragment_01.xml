@@ -7,6 +7,12 @@
 
     <!-- TODO: Update blank fragment layout -->
     <!-- id="@+id/textViews는 왜 안보이는거지?  -->
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/background" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -15,89 +21,87 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:text="Hello blank fragment01" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="30dp"
-        android:text="어닝 조작"
-        android:textSize="34sp" />
+<!--    <TextView-->
+<!--        android:id="@+id/textView2"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="40dp"-->
+<!--        android:layout_marginTop="30dp"-->
+<!--        android:text="어닝 조작"-->
+<!--        android:textSize="34sp" />-->
 
     <Button
         android:id="@+id/button"
-        android:layout_width="70dp"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="300dp"
-        android:layout_marginStart="30dp"
-        android:backgroundTint="#FFEB3B"
+        android:layout_marginTop="120dp"
+        android:layout_marginStart="50dp"
+        android:backgroundTint="#fff45c"
         android:textColor="#000000"
-        android:text="▼" />
+        android:text="UP" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="70dp"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="200dp"
-        android:layout_marginStart="130dp"
-        android:backgroundTint="#FFEB3B"
+        android:layout_marginTop="120dp"
+        android:layout_marginStart="150dp"
+        android:backgroundTint="#fff45c"
         android:textColor="#000000"
-        android:text="■" />
+        android:text="STOP" />
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="70dp"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="120dp"
         android:layout_marginEnd="100dp"
-        android:layout_marginStart="230dp"
-        android:backgroundTint="#FFEB3B"
+        android:layout_marginStart="250dp"
+        android:backgroundTint="#fff45c"
         android:textColor="#000000"
-        android:text="▲" />
+        android:text="DOWN" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="200dp"
-        android:text="조명"
-        android:textSize="34sp" />
+<!--    <TextView-->
+<!--        android:id="@+id/textView3"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="40dp"-->
+<!--        android:layout_marginTop="200dp"-->
+<!--        android:text="조명"-->
+<!--        android:textSize="34sp" />-->
 
     <Button
         android:id="@+id/button4"
-        android:layout_width="70dp"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="270dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="320dp"
         android:layout_marginEnd="300dp"
-        android:backgroundTint="#FFEB3B"
+        android:backgroundTint="#fff45c"
         android:textColor="#000000"
-        android:text="자동" />
+        android:text="AUTO" />
 
     <Button
         android:id="@+id/button5"
-        android:layout_width="70dp"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="270dp"
+        android:layout_marginTop="320dp"
         android:layout_marginEnd="200dp"
-        android:layout_marginStart="130dp"
-        android:backgroundTint="#FFEB3B"
+        android:layout_marginStart="150dp"
+        android:backgroundTint="#fff45c"
         android:textColor="#000000"
-        android:text="꺼짐" />
+        android:text="OFF" />
 
     <Button
         android:id="@+id/button6"
-        android:layout_width="70dp"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="270dp"
+        android:layout_marginTop="320dp"
         android:layout_marginEnd="100dp"
-        android:layout_marginStart="230dp"
-        android:backgroundTint="#FFEB3B"
+        android:layout_marginStart="250dp"
+        android:backgroundTint="#fff45c"
         android:textColor="#000000"
-        android:text="켜짐" />
+        android:text="ON" />
 
     <!-- on/off 버튼   -->
 
